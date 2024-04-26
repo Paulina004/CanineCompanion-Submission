@@ -1,0 +1,6 @@
+framework module Pods_CanineCompanion_CanineCompanionUITests {
+  umbrella header "Pods-CanineCompanion-CanineCompanionUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

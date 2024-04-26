@@ -1,0 +1,26 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'CanineCompanion' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for CanineCompanion
+  pod 'Firebase'
+  pod 'FirebaseCore'
+  pod 'FirebaseAuth'
+  pod 'FirebaseDatabase'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+  pod 'ChatGPTSwift', '~> 1.3.1'
+
+  target 'CanineCompanionTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'CanineCompanionUITests' do
+    # Pods for testing
+  end
+
+end
