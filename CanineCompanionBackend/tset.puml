@@ -1,0 +1,49 @@
+' If mac press "option + D" to preview plantUML
+' PlantUML extsion
+
+@startuml
+title Sequence Diagram: User Query and Enhanced Response
+
+participant User
+participant Backend
+participant OpenAI
+participant Pinecone
+participant GPT
+
+group Articles Processing
+    activate Backend
+    Backend->OpenAI: Generate text embeddings for articles content
+    activate OpenAI
+    OpenAI->Backend: Returns embeddings for articles content
+    deactivate OpenAI
+    Backend->Pinecone: Stores embeddings in index for articles content
+    activate Pinecone
+    Pinecone->Backend: Acknowledge embeddings stored
+    deactivate Pinecone
+    deactivate Backend
+end
+
+group User Request
+    activate User
+    User->Backend: Sends query
+    activate Backend
+    Backend->OpenAI: Embed user query
+    activate OpenAI
+    OpenAI->Backend: Returns embeddings for user query
+    deactivate OpenAI
+    Backend->Pinecone: Query for similar information
+    activate Pinecone
+    Pinecone->Pinecone: Retrieve similar vectors
+    Pinecone->Backend: Returns matching results
+    deactivate Pinecone
+    Backend->GPT: Generate prompt for results refinement
+    activate GPT
+    GPT->Backend: Refine response
+    deactivate GPT
+    Backend->User: Returns refined results
+    deactivate Backend
+    deactivate User
+end
+
+@enduml
+
